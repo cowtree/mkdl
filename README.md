@@ -52,8 +52,7 @@ if __name__ == '__main__':
     main()
 ```
 
-To get started, you can have a look at the simple [random action agent](https://github.com/SimiPro/mkdl/tree/master/mkdl/random_agent.py) which executes random actions.
-
+To get started, you can have a look at the simple [random action agent](https://github.com/cowtree/mkdl/blob/master/mkdl/random_agent.py) which executes random actions.
 
 #### interaction with bizhawk
 Based on the gym environment from https://github.com/openai/gym, each mario environment starts its own python server. Then, we start via some environment variables that point to the path of the bizhawk client. For each environment we establish a connection with the python servers. This results in a  1 to 1 socket between the mario environments on the python side and the Mario clients on the bizhawk side. Via this socket we have a primitive text based communication with a few commands e.g. "RESET, 0.1234:1, ..".
@@ -69,12 +68,10 @@ In our case the state is defined as the current screenshot. The reward is some v
 MarioConnection encapsulates the byte communication between bizhawk and python.
 
 
-
 #### lua concerning side nodes
 
 Since bizhawk can't currently accept some number to indicate which python server to connect. We had to create a script for each specific port to connect. This is the reason for the numerous new_mario_env0.lua, new_mario_env1.lua etc.
 Since everything starts automatically.
-
 
 #### bizhawk side notes
 When bizhawk is loaded it loads the state saved on state 2. http://tasvideos.org/Bizhawk/SavestateFormat.html
@@ -84,15 +81,15 @@ It is advised to save the state at the beginning of the track such that the agen
 #### mkdl
 mkdl holds all the python code.
 Short summary:
-* [random_agent.py](https://github.com/SimiPro/mkdl/tree/master/mkdl/random_agent.py): Example agent
-* [start_bizhawk.py](https://github.com/SimiPro/mkdl/tree/master/mkdl/start_bizhawk.py) : responsible for starting bizhawk automatically
-* [utils.py](https://github.com/SimiPro/mkdl/tree/master/mkdl/utils.py): some util functions
-* [run_bizhawk.py](https://github.com/SimiPro/mkdl/tree/master/run_bizhawk.py): starts bizhawk from python console
-* [policy.py](https://github.com/SimiPro/mkdl/tree/master/mkdl/policy.py): holds our used NeuralNetworks. Mostly used is OurCNN2 which is a CNN with 2 additional non-linear relu layers.
-* [mario_env.py](https://github.com/SimiPro/mkdl/tree/master/mkdl/mario_env.py): holds the MarioEnv which the agent can act on. And also the MarioConnection which communicates with the Bizhawk
-* [ppo2_agent.py](https://github.com/SimiPro/mkdl/tree/master/mkdl/ppo2_agent.py): executes the ppo agent. [openai ppo implementation](https://github.com/openai/baselines/tree/master/baselines/ppo2)
-* [a2c_agent.py](https://github.com/SimiPro/mkdl/tree/master/mkdl/a2c_agent.py)
-* [a3c_agent.py](https://github.com/SimiPro/mkdl/tree/master/mkdl/a3c_agent.py)
+* [random_agent.py](https://github.com/cowtree/mkdl/blob/master/mkdl/random_agent.py): Example agent
+* [start_bizhawk.py](https://github.com/cowtree/mkdl/blob/master/mkdl/start_bizhawk.py) : responsible for starting bizhawk automatically
+* [utils.py](https://github.com/cowtree/mkdl/blob/master/mkdl/utils.py): some util functions
+* [run_bizhawk.py](https://github.com/cowtree/mkdl/blob/master/run_bizhawk.py): starts bizhawk from python console
+* [policy.py](https://github.com/cowtree/mkdl/blob/master/mkdl/policy.py): holds our used NeuralNetworks. Mostly used is OurCNN2 which is a CNN with 2 additional non-linear relu layers.
+* [mario_env.py](https://github.com/cowtree/mkdl/blob/master/mkdl/mario_env.py): holds the MarioEnv which the agent can act on. And also the MarioConnection which communicates with the Bizhawk
+* [ppo2_agent.py](https://github.com/cowtree/mkdl/blob/master/mkdl/ppo2_agent.py): executes the ppo agent. [openai ppo implementation](https://github.com/openai/baselines/tree/master/baselines/ppo2)
+* [a2c_agent.py](https://github.com/cowtree/mkdl/blob/master/mkdl/a2c_agent.py)
+* [a3c_agent.py](https://github.com/cowtree/mkdl/blob/master/mkdl/a3c_agent.py)
 * just some additional agents we tried out and rejected again for our problem.
 
 ### Prerequisites
